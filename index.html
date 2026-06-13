@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mark Knille | Graphic Designer Portfolio</title>
+  <meta
+    name="description"
+    content="Graphic designer portfolio website showcasing branding, social media design, marketing collateral, presentation design, visual storytelling, creative support, and front-end aware design thinking."
+  />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-2: #121936;
+      --card: rgba(255, 255, 255, 0.06);
+      --line: rgba(255, 255, 255, 0.12);
+      --text: #eef2ff;
+      --muted: #b8c0e0;
+      --accent: #7c9cff;
+      --accent-2: #9d7cff;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      --radius: 20px;
+      --max: 1150px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 156, 255, 0.14), transparent 35%),
+        radial-gradient(circle at top right, rgba(157, 124, 255, 0.12), transparent 30%),
+        linear-gradient(180deg, var(--bg), #070b16 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea { font: inherit; }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .section { padding: 84px 0; }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .section-copy {
+      max-width: 760px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .grid { display: grid; gap: 24px; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+
+    /* ---------- INTERACTIVE UPGRADE STYLES ---------- */
+
+    .card,
+    .btn,
+    .project-visual,
+    .profile-item,
+    .proof-tags span,
+    .contact-list li {
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease,
+        filter 0.3s ease;
+    }
+
+    /* Better default card behavior */
+    .card {
+    position: relative;
+    overflow: hidden;
+    }
+
+    /* Soft glow layer */
+    .card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at top left,
+        rgba(124, 156, 255, 0.14),
+        transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    }
+
+    /* Hover interactions only for devices that support hover */
+    @media (hover: hover) and (pointer: fine) {
+    .card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(124, 156, 255, 0.35);
+        box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(124, 156, 255, 0.08);
+    }
+
+    .card:hover::after {
+        opacity: 1;
+    }
+
+    .profile-item:hover,
+    .contact-list li:hover,
+    .proof-tags span:hover {
+        transform: translateY(-3px);
+        border-color: rgba(124, 156, 255, 0.35);
+        background: rgba(255, 255, 255, 0.07);
+    }
+
+    .btn:hover {
+        transform: translateY(-3px) scale(1.01);
+        box-shadow: 0 12px 30px rgba(124, 156, 255, 0.18);
+    }
+
+    .btn-secondary:hover {
+        background: rgba(124, 156, 255, 0.08);
+    }
+
+    .project-card:hover .project-visual {
+        transform: scale(1.04);
+        filter: brightness(1.06);
+    }
+    }
+
+    /* Press effect for buttons */
+    .btn:active {
+    transform: translateY(0) scale(0.98);
+    }
+
+    /* Project visual smoother zoom */
+    .project-card {
+    overflow: hidden;
+    }
+
+    .project-visual {
+      aspect-ratio: 16 / 10;
+      background: linear-gradient(135deg, rgba(124,156,255,0.18), rgba(157,124,255,0.14));
+      border-bottom: 1px solid var(--line);
+      overflow: hidden;
+    }
+
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s ease, filter 0.35s ease;
+    }
+
+    .project-card:hover .project-visual img {
+      transform: scale(1.05);
+      filter: brightness(1.05);
+    }
+
+    /* Slight enhancement for hero proof cards */
+    .mini-proof .card:hover h3 {
+    color: var(--accent);
+    }
+
+    /* Skill cards feel more interactive */
+    .skill-card:hover h3,
+    .about-card:hover h3,
+    .process-card:hover h3,
+    .contact-card:hover h3,
+    .contact-form:hover h3 {
+    color: var(--accent);
+    }
+
+    /* Inputs feel better too */
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+    outline: none;
+    border-color: rgba(124, 156, 255, 0.5);
+    box-shadow: 0 0 0 4px rgba(124, 156, 255, 0.12);
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 14px 20px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-weight: 700;
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease,
+            background 0.25s ease,
+            color 0.25s ease,
+            filter 0.25s ease;
+        cursor: pointer;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        color: white;
+        box-shadow: 0 10px 24px rgba(124, 156, 255, 0.22);
+    }
+
+    .btn-primary:hover {
+        filter: brightness(1.05);
+    }
+
+    .btn-secondary {
+        background: rgba(255,255,255,0.02);
+        color: var(--text);
+        border-color: var(--line);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 16, 32, 0.78);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 16px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+
+    .logo span { color: var(--accent); }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav a {
+        color: var(--muted);
+        font-size: 0.96rem;
+        transition: color 0.25s ease;
+        position: relative;
+    }
+
+    .nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.25s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+        color: var(--text);
+    }
+
+    .nav a:hover::after,
+    .nav a.active::after {
+        transform: scaleX(1);
+    }
+
+    .menu-btn {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 14px;
+    }
+
+    .hero { padding: 72px 0 50px; }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 0.98;
+      margin-bottom: 18px;
+      max-width: 11ch;
+    }
+
+    .hero h1 span { color: var(--accent); }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 650px;
+      margin-bottom: 26px;
+      font-size: 1.04rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .mini-proof {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .mini-proof .card { padding: 18px; }
+    .mini-proof h3 { font-size: 1.5rem; margin-bottom: 4px; }
+    .mini-proof p { margin: 0; font-size: 0.92rem; }
+
+    .hero-panel {
+        padding: 26px;
+        position: relative;
+        overflow: hidden;
+        background:
+            linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04));
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,156,255,0.35), transparent 70%);
+    }
+
+    .profile-box {
+      display: grid;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .profile-photo {
+      aspect-ratio: 4 / 4.6;
+      border-radius: 22px;
+      background: linear-gradient(135deg, rgba(124,156,255,0.16), rgba(157,124,255,0.16));
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-weight: 700;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .profile-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .profile-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .profile-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .profile-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .profile-item span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .about-card { padding: 28px; }
+    .about-card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+    .about-card p, .about-card li { color: var(--muted); }
+    .about-card ul { display: grid; gap: 10px; padding-left: 18px; }
+    .about-card ul li { list-style: disc; }
+
+    .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    .skill-card { padding: 24px; }
+    .skill-card h3 { margin-bottom: 8px; font-size: 1.15rem; }
+    .skill-card p { color: var(--muted); margin-bottom: 16px; }
+
+    .proof-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .proof-tags span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    .projects-grid { grid-template-columns: repeat(3, 1fr); }
+    .project-card { overflow: hidden; }
+
+    .project-body { padding: 22px; }
+    .project-body h3 { margin-bottom: 8px; font-size: 1.15rem; }
+    .project-body p { color: var(--muted); margin-bottom: 16px; }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .project-meta span {
+      font-size: 0.85rem;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .process-grid { grid-template-columns: repeat(4, 1fr); }
+    .process-card { padding: 22px; }
+
+    .process-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(124,156,255,0.16);
+      color: var(--accent);
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .process-card h3 { margin-bottom: 8px; font-size: 1.05rem; }
+    .process-card p { color: var(--muted); font-size: 0.95rem; }
+
+    .cta-box {
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta-box p { color: var(--muted); }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-end;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+    }
+
+    .contact-card, .contact-form { padding: 28px; }
+    .contact-card p, .contact-card li { color: var(--muted); }
+
+    .contact-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .contact-list li {
+      padding: 14px 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .contact-form form { display: grid; gap: 14px; }
+    .contact-form label { font-size: 0.94rem; color: var(--text); font-weight: 600; }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-top: 8px;
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .site-footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .footer-wrap {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 22px;
+    }
+
+
+    .design-approach {
+      grid-column: 1 / -1;
+      margin-top: 12px;
+      padding-top: 32px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .design-approach-intro h3 {
+      font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    .design-approach-intro p {
+      color: var(--muted);
+      max-width: 620px;
+    }
+
+    .design-approach-points {
+      display: grid;
+      gap: 16px;
+    }
+
+    .approach-point {
+      padding: 0 0 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .approach-point:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .approach-point strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+      color: var(--text);
+    }
+
+    .approach-point span {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+
+    @media (max-width: 1024px) {
+      .design-approach {
+        gap: 22px;
+        padding-top: 28px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .about-grid,
+      .cta-box,
+      .contact-grid,
+      .design-approach {
+        grid-template-columns: 1fr;
+      }
+
+      .projects-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-grid { grid-template-columns: repeat(2, 1fr); }
+      .cta-actions { justify-content: flex-start; }
+    }
+
+    @media (max-width: 768px) {
+      .design-approach {
+        margin-top: 4px;
+        padding-top: 24px;
+        gap: 18px;
+      }
+
+      .approach-point strong {
+        font-size: 0.96rem;
+      }
+
+      .approach-point span {
+        font-size: 0.92rem;
+      }
+
+      .nav {
+        position: absolute;
+        top: 74px;
+        left: 0;
+        right: 0;
+        background: rgba(11, 16, 32, 0.98);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px 4%;
+      }
+
+      .nav.open { display: flex; }
+      .menu-btn { display: inline-flex; }
+
+      .mini-proof,
+      .skills-grid,
+      .projects-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section { padding: 68px 0; }
+      .hero { padding-top: 50px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="#home" class="logo">Mark<span>Knille</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Branding. Layout. Visual Storytelling. Front-End Aware.</span>
+          <h1>I create <span>clean, compelling</span> visual design backed by front-end thinking.</h1>
+          <p>
+            I’m a graphic designer with a strong eye for layout, branding, and visual communication, with a background in full-stack development and a stronger focus on front-end. That means I think not only about how design looks, but also how it translates into real user-facing experiences across digital and print touchpoints.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View Design Work</a>
+            <a href="#contact" class="btn btn-secondary">Hire Me</a>
+            <a href="resume.pdf" class="btn btn-secondary" target="_blank">Download Resume</a>
+          </div>
+
+          <div class="mini-proof">
+            <article class="card"><h3>8</h3><p>core design strengths I can contribute from day one</p></article>
+            <article class="card"><h3>3+</h3><p>portfolio samples that show how I solve visually</p></article>
+            <article class="card"><h3>1 goal</h3><p>help brands look sharper, clearer, and more memorable</p></article>
+          </div>
+        </div>
+
+        <aside class="card hero-panel">
+          <div class="profile-box">
+            <div class="profile-photo">
+              <img src="My_Image.png" alt="Portrait of Mark Knille" class="profile-photo-img" />
+            </div>
+
+            <div class="profile-list">
+              <div class="profile-item">
+                <strong>Best fit roles</strong>
+                <span>Graphic Designer, Brand Designer, Marketing Designer, Front-End Aware Creative</span>
+              </div>
+              <div class="profile-item">
+                <strong>Strength</strong>
+                <span>I turn rough ideas into polished visuals that feel intentional, aligned, and easier to carry through into real digital execution.</span>
+              </div>
+              <div class="profile-item">
+                <strong>Tools</strong>
+                <span>Adobe Photoshop, Illustrator, Canva, presentation design tools, branding systems, creative workflow tools, plus HTML, CSS, JavaScript, and WordPress familiarity</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <span class="eyebrow">About me</span>
+        <h2 class="section-title">Design That Communicates Clearly, Looks Professional, and Translates Well to Digital.</h2>
+        <p class="section-copy">
+          I’m a graphic designer focused on creating visuals that are polished, strategic, and easy to understand. I work best where branding, layout, storytelling, and communication come together, and my development background helps me think more clearly about structure, usability, and front-end execution as well.
+        </p>
+
+        <div class="about-grid">
+          <article class="card about-card">
+            <h3>My value</h3>
+            <p>
+              I combine visual taste, layout discipline, and communication with a practical understanding of how design lives on the web. I can help with brand visuals, social graphics, marketing materials, presentation design, and design work that supports smoother front-end implementation.
+            </p>
+          </article>
+
+          <article class="card about-card">
+            <h3>What I want employers to know</h3>
+            <ul>
+              <li>I can take direction and turn it into a finished asset.</li>
+              <li>I can break large tasks into clear steps and keep things moving.</li>
+              <li>I care about communication and clarity, not just making things look good.</li>
+              <li>I bring front-end awareness, so I understand how design decisions affect build and usability.</li>
+              <li>I communicate well with clients and teammates.</li>
+              <li>I am actively improving and serious about growing in design as a profession.</li>
+            </ul>
+            <div class="hero-actions" style="margin-top:16px;">
+              <a href="mailto:markknille@gmail.com?subject=Portfolio%20Inquiry" class="btn btn-primary">Email Me Directly</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <span class="eyebrow">Design skills + proof</span>
+        <h2 class="section-title">A Practical Skill Set for Modern Graphic Design Work.</h2>
+        <p class="section-copy">
+         I bring a mix of branding, layout, content design, and creative support skills that help ideas move from concept to finished asset. I also bring front-end awareness from a full-stack development background, which helps me create design work that feels polished, practical, and easier to translate into digital experiences.
+        </p>
+
+        <div class="grid skills-grid">
+          <article class="card skill-card">
+            <h3>Brand Identity Design</h3>
+            <p>I create brand visuals that feel cohesive, recognizable, and aligned with a business’s tone, audience, and positioning.</p>
+            <div class="proof-tags"><span>Logo concepts</span><span>Brand direction</span><span>Visual consistency</span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Social Media Graphics</h3>
+            <p>I design scroll-stopping graphics for promotions, launches, announcements, and evergreen content across social platforms.</p>
+            <div class="proof-tags"><span>Instagram posts</span><span>Story graphics</span><span>Campaign visuals</span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Marketing Collateral</h3>
+            <p>I build polished sales and marketing materials that communicate clearly and support stronger brand presentation.</p>
+            <div class="proof-tags"><span>Flyers</span><span>Brochures</span><span>Promo materials</span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Presentation Design</h3>
+            <p>I turn rough information into clean, professional slide decks that are easier to follow and more visually engaging.</p>
+            <div class="proof-tags"><span>Pitch decks</span><span>Training slides</span><span>Visual hierarchy</span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Layout & Typography</h3>
+            <p>I pay close attention to spacing, alignment, hierarchy, and readability so every design feels organized and intentional.</p>
+            <div class="proof-tags"><span>Editorial layouts</span><span>Readable compositions</span><span>Type pairing</span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Design Systems & Front-End Awareness</h3>
+            <p>I improve visuals that feel cluttered, unclear, or off-brand by simplifying the design and sharpening the message.</p>
+            <div class="proof-tags"><span>Design cleanup</span><span>Visual fixes</span><span>Brand polish</span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Project Coordination</h3>
+            <p>I can manage revisions, organize deliverables, and keep creative work moving without losing clarity or consistency.</p>
+            <div class="proof-tags"><span>Revision tracking</span><span>Asset organization</span><span>Deadline awareness</span></div>
+          </article>
+
+          <article class="card skill-card">
+            <h3>Client Communication</h3>
+            <p>I present design ideas clearly, handle feedback professionally, and help clients feel supported through the creative process.</p>
+            <div class="proof-tags"><span>Creative updates</span><span>Clear explanations</span><span>Feedback handling</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <span class="eyebrow">Selected Work</span>
+        <h2 class="section-title">Work that shows how I think, solve, and build.</h2>
+        <p class="section-copy">
+          A look at how I turn ideas into clear, polished work.
+        </p>
+
+        <div class="grid projects-grid">
+          <article class="card project-card">
+            <div class="project-visual">
+              <a href="pdfs/Bhava.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Bhava Brand Visuals PDF in a new tab">
+                <img src="images/Bhava_thumbnail.png" alt="Preview of Bhava design work" />
+              </a>
+            </div>
+            <div class="project-body">
+              <h3>Bhava Brand Visuals</h3>
+              <p>
+                A polished branding-focused design piece created to strengthen visual identity, presentation, and brand consistency across key touchpoints.
+              </p>
+              <div class="project-meta">
+                <span>Branding</span>
+                <span>Logo Design</span>
+                <span>Visual Identity</span>
+              </div>
+              <div class="project-links">
+                <a href="pdfs/Bhava.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Project</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-visual">
+              <a href="pdfs/Revy.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Revy Campaign Graphics PDF in a new tab">
+                <img src="images/Revy_thumbnail.png" alt="Preview of Revy design work" />
+              </a>
+            </div>
+            <div class="project-body">
+              <h3>Revy Campaign Graphics</h3>
+              <p>
+                A campaign-style visual design project built to create eye-catching, cohesive promotional graphics with clear hierarchy and strong brand presentation.
+              </p>
+              <div class="project-meta">
+                <span>Social Media Design</span>
+                <span>Marketing Graphics</span>
+                <span>Campaign Visuals</span>
+              </div>
+              <div class="project-links">
+                <a href="pdfs/Revy.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Project</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card">
+            <div class="project-visual">
+              <a href="pdfs/Speaker-kit.pdf" target="_blank" rel="noopener noreferrer" aria-label="Open Speaker Kit Design PDF in a new tab">
+                <img src="images/Speaker-kit_thumbnail.png" alt="Preview of speaker kit design work" />
+              </a>
+            </div>
+            <div class="project-body">
+              <h3>Speaker Kit Design</h3>
+              <p>
+                A speaker kit presentation designed to communicate key information clearly while keeping the layout polished, organized, and visually professional.
+              </p>
+              <div class="project-meta">
+                <span>Presentation Design</span>
+                <span>Layout</span>
+                <span>Typography</span>
+              </div>
+              <div class="project-links">
+                <a href="pdfs/Speaker-kit.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">View Project</a>
+              </div>
+            </div>
+          </article>
+
+          <div class="design-approach" id="featured-design-case-study">
+            <div class="design-approach-intro">
+              <span class="eyebrow">Design approach</span>
+              <h3>How I Approach Design Work</h3>
+              <p>
+                I start by understanding what the brand needs to communicate, who the audience is, and what kind of visual tone will support that goal best. From there, I build around clarity, hierarchy, consistency, and polish so the final work feels intentional and ready to use.
+              </p>
+            </div>
+
+            <div class="design-approach-points">
+              <div class="approach-point">
+                <strong>What I prioritize</strong>
+                <span>Brand alignment, visual hierarchy, readability, consistency, and audience relevance.</span>
+              </div>
+              <div class="approach-point">
+                <strong>What I create</strong>
+                <span>Concepts, layouts, campaign graphics, brand assets, decks, and supporting design systems.</span>
+              </div>
+              <div class="approach-point">
+                <strong>How I refine</strong>
+                <span>I review spacing, typography, balance, and presentation details until the design feels clean and cohesive.</span>
+              </div>
+              <div class="approach-point">
+                <strong>What the outcome should feel like</strong>
+                <span>Professional, clear, visually strong, and aligned with the message the brand needs to communicate.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="process">
+      <div class="container">
+        <span class="eyebrow">How I work</span>
+        <h2 class="section-title">Thoughtful Design Process. Practical Creative Execution.</h2>
+        <p class="section-copy">
+           I approach design with strategy, clarity, and follow-through so the final work is attractive, useful, and aligned with the brand.
+        </p>
+
+        <div class="grid process-grid">
+          <article class="card process-card"><div class="process-number">1</div><h3>Understand the message</h3><p>I clarify what the brand needs to communicate, who the audience is, and what the design needs to achieve.</p></article>
+          <article class="card process-card"><div class="process-number">2</div><h3>Build the visual direction</h3><p>I shape the layout, typography, color, and overall composition before refining the final design system.</p></article>
+          <article class="card process-card"><div class="process-number">3</div><h3>Create and refine</h3><p>I design the assets, review the details, and refine the work until it feels clear, polished, and aligned.</p></article>
+          <article class="card process-card"><div class="process-number">4</div><h3>Deliver professionally</h3><p>I organize the final files, present the work clearly, and make sure the assets are ready for real use.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="card cta-box">
+          <div>
+            <span class="eyebrow">Open to work</span>
+            <h2 class="section-title">I am ready to contribute as a designer who also understands digital execution.</h2>
+            <p>Looking for roles in graphic design, brand support, social media design, marketing design, presentation design, or creative roles where front-end awareness is an advantage.</p>
+          </div>
+          <div class="cta-actions">
+            <a href="resume.pdf" class="btn btn-primary" target="_blank">Download Resume</a>
+            <a href="#contact" class="btn btn-secondary">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <span class="eyebrow">Contact</span>
+        <h2 class="section-title">Let’s connect.</h2>
+        <p class="section-copy">If you think I’d be a good fit for your team or project, I’d be glad to hear from you.</p>
+
+        <div class="contact-grid">
+          <article class="card contact-card">
+            <h3>Contact details</h3>
+            <p>You can reach me here for roles, projects, and creative opportunities.</p>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a href="mailto:markknille@gmail.com">markknille@gmail.com</a></li>
+              <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/mark-knille-jatulan-02b657285/" target="_blank" rel="noopener noreferrer">linkedin.com/in/mark-knille-jatulan-02b657285/</a></li>
+              <li><strong>GitHub:</strong> <a href="https://github.com/mark-knille" target="_blank" rel="noopener noreferrer">github.com/mark-knille</a></li>
+              <li><strong>Location:</strong> Batangas City, Philippines</li>
+            </ul>
+          </article>
+
+          <article class="card contact-form">
+            <h3>Quick message form</h3>
+            <form id="contactForm">
+              <div>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" />
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" />
+              </div>
+              <div>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Tell me about the role or project."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Message</button>
+              <p class="note">This opens your email app with the message details filled in.</p>
+            </form>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Mark Knille. Built with HTML, CSS, and JavaScript.</p>
+      <p>Designed to showcase creative thinking, design execution, and professional potential.</p>
+    </div>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav a');
+    const sections = document.querySelectorAll('section[id]');
+    const year = document.getElementById('year');
+
+    menuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('open');
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('open');
+      });
+    });
+
+    function setActiveLink() {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', setActiveLink);
+    setActiveLink();
+
+    const contactForm = document.getElementById('contactForm');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('name')?.value.trim() || '';
+        const email = document.getElementById('email')?.value.trim() || '';
+        const message = document.getElementById('message')?.value.trim() || '';
+
+        const subject = encodeURIComponent(`Portfolio Inquiry from ${name || 'Website Visitor'}`);
+        const body = encodeURIComponent(
+`Name: ${name}
+Email: ${email}
+
+Message:
+${message}`
+        );
+
+        window.location.href = `mailto:markknille@gmail.com?subject=${subject}&body=${body}`;
+      });
+    }
+
+    year.textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
