@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Kits | Mark Knille</title>
+  <meta
+    name="description"
+    content="Full brand identity systems and guideline decks — logo systems, color palettes, typography, and applied branding — designed for freelance clients."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html#home" class="logo">Mark<span>Knille</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section subpage-hero">
+      <div class="container">
+        <a href="index.html#projects" class="back-link">&larr; Back to Selected Work</a>
+        <span class="eyebrow">Freelance Work</span>
+        <h1 class="section-title">Brand Kits</h1>
+        <p class="section-copy">
+          Full brand identity systems built for real client use — logo systems, color palettes, typography, and applied branding, packaged into complete guideline decks.
+        </p>
+        <div id="galleryRoot"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Mark Knille. Built with HTML, CSS, and JavaScript.</p>
+      <p>Designed to showcase creative thinking, design execution, and professional potential.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-btn lightbox-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lightbox-btn lightbox-zoom" id="lbZoom" aria-label="Switch to full-size scroll view" title="Toggle zoom / scroll view">&#128269;</button>
+    <button class="lightbox-btn lightbox-prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-btn lightbox-next" id="lbNext" aria-label="Next image">&#8250;</button>
+    <div class="lightbox-inner">
+      <div class="lightbox-media" id="lbMedia">
+        <img id="lbImg" alt="" />
+      </div>
+      <div class="lightbox-caption">
+        <strong id="lbTitle"></strong>
+        <span id="lbType"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="site.js"></script>
+  <script src="gallery.js"></script>
+  <script>
+    const BRAND_KIT_RATIOS = {
+      bhavaPage:   { aspect: '612/792', fit: 'contain', basis: '380px', max: '440px' },
+      crunchSlide: { aspect: '16/9',    fit: 'contain', basis: '520px', max: '600px' }
+    };
+
+    const BRAND_KIT_GROUPS = [
+      {
+        name: "Bhava Harmonium Co. — Brand Guidelines",
+        client: "Music Instrument Brand · Full Identity System",
+        meta: "6-page brand guide · Logo system, color palette, typography, merch application",
+        download: { href: "pdfs/Bhava.pdf", label: "Download Full Guidelines (PDF)" },
+        rows: [{ items: [
+          { src: "images/brand-kits/bhava-cover.jpg", title: "Cover", type: "Brand Guideline · Cover", preset: "bhavaPage" },
+          { src: "images/brand-kits/bhava-logo-variations.jpg", title: "Logo Variations", type: "Primary, Secondary & Outlined Logo", preset: "bhavaPage" },
+          { src: "images/brand-kits/bhava-emblem-merch.jpg", title: "Emblem, Favicon & Merch", type: "Applied Branding", preset: "bhavaPage" },
+          { src: "images/brand-kits/bhava-color-palette.jpg", title: "Color Palette", type: "Brand Colors & Hex Codes", preset: "bhavaPage" },
+          { src: "images/brand-kits/bhava-typography.jpg", title: "Fonts Family", type: "Typography System", preset: "bhavaPage" },
+          { src: "images/brand-kits/bhava-closing.jpg", title: "Closing Mark", type: "Brand Guideline · Closing", preset: "bhavaPage" }
+        ]}]
+      },
+      {
+        name: "CrunchCup — Brand Guidelines 2023",
+        client: "DTC Cereal Brand · Full Identity System",
+        meta: "24-page brand guide · Logo, color, typography, icons, key visuals, print & social application",
+        download: { href: "pdfs/CrunchCup-Brand-Guidelines-2023.pdf", label: "Download Full Guidelines (PDF)" },
+        rows: [{ items: [
+          { src: "images/brand-kits/crunchcup-cover.jpg", title: "Cover", type: "Brand Guideline · Cover", preset: "crunchSlide" },
+          { src: "images/brand-kits/crunchcup-logo-usage.jpg", title: "Logo Usage", type: "Clear Space & Minimum Size", preset: "crunchSlide" },
+          { src: "images/brand-kits/crunchcup-color-palette.jpg", title: "Color Palette", type: "Primary & Secondary Palette", preset: "crunchSlide" },
+          { src: "images/brand-kits/crunchcup-typography.jpg", title: "Typography", type: "Typeface System", preset: "crunchSlide" },
+          { src: "images/brand-kits/crunchcup-social-mockup.jpg", title: "Social Application", type: "Instagram Mockups", preset: "crunchSlide" },
+          { src: "images/brand-kits/crunchcup-print-billboard.jpg", title: "Print Application", type: "Billboard Mockup", preset: "crunchSlide" }
+        ]}]
+      }
+    ];
+
+    galleries.brandKits = renderGallery('galleryRoot', BRAND_KIT_GROUPS, BRAND_KIT_RATIOS, 'brandKits');
+  </script>
+</body>
+</html>

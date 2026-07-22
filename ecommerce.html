@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>E-commerce Design | Mark Knille</title>
+  <meta
+    name="description"
+    content="Product-focused visuals, storefront graphics, and promotional creative built to support online retail and conversion-focused campaigns."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html#home" class="logo">Mark<span>Knille</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section subpage-hero">
+      <div class="container">
+        <a href="index.html#projects" class="back-link">&larr; Back to Selected Work</a>
+        <span class="eyebrow">Freelance Work</span>
+        <h1 class="section-title">E-commerce Design</h1>
+        <p class="section-copy">
+          Product-focused visuals, storefront graphics, and promotional creative built to support online retail and conversion-focused campaigns.
+        </p>
+        <div id="galleryRoot"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Mark Knille. Built with HTML, CSS, and JavaScript.</p>
+      <p>Designed to showcase creative thinking, design execution, and professional potential.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-btn lightbox-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lightbox-btn lightbox-zoom" id="lbZoom" aria-label="Switch to full-size scroll view" title="Toggle zoom / scroll view">&#128269;</button>
+    <button class="lightbox-btn lightbox-prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-btn lightbox-next" id="lbNext" aria-label="Next image">&#8250;</button>
+    <div class="lightbox-inner">
+      <div class="lightbox-media" id="lbMedia">
+        <img id="lbImg" alt="" />
+      </div>
+      <div class="lightbox-caption">
+        <strong id="lbTitle"></strong>
+        <span id="lbType"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="site.js"></script>
+  <script src="gallery.js"></script>
+  <script>
+    const ECOMMERCE_RATIOS = {
+      storyTall:  { aspect: '1080/1920', fit: 'cover',   basis: '260px', max: '300px' },
+      square:     { aspect: '1/1',       fit: 'cover',   basis: '300px', max: '340px' },
+      billboard:  { aspect: '4961/3508', fit: 'contain', basis: '560px', max: '640px' },
+      infographicThumb: { aspect: '4/3', fit: 'cover', position: 'top', basis: '320px', max: '380px' },
+      wideBanner: { aspect: '1200/725',  fit: 'contain', basis: '480px', max: '560px' }
+    };
+
+    const ECOMMERCE_GROUPS = [
+      {
+        name: "Unilever × LazMall — 11.11 Mega Sale", client: "Seasonal Campaign · IG Story",
+        rows: [{ items: [
+          { src: "images/ecommerce/unilever-1111-sale-ig-story.jpg", title: "Biggest Sale of the Year — Up to 50% Off", type: "IG Story · 1080×1920", preset: "storyTall" }
+        ]}]
+      },
+      {
+        name: "TRESemmé — Blonde Brilliance", client: "Hair Care Brand · Product Launch Ad",
+        rows: [{ items: [
+          { src: "images/ecommerce/tresemme-blonde-brilliance-ad.jpg", title: "Blonde Brilliance for Bleached Hair", type: "Product Launch Ad", preset: "billboard" }
+        ]}]
+      },
+      {
+        name: "Breeze × Enfagrow — Lazada Bundle Sale", client: "Cross-Brand Promo · Lazada",
+        rows: [{ items: [
+          { src: "images/ecommerce/breeze-enfagrow-bundle-sale.jpg", title: "Big Breeze Sale — Free Enfagrow Bundle", type: "Marketplace Campaign Ad · 1080×1080", preset: "square" }
+        ]}]
+      },
+      {
+        name: "Pond's — Bright Brilliance Serum", client: "Skincare Brand · Product Detail Page",
+        rows: [{ items: [
+          { src: "images/ecommerce/ponds-bright-brilliance-serum-guide.png", title: "Day & Night Serum — Usage Guide", type: "Product Detail Page · Infographic", preset: "infographicThumb" }
+        ]}]
+      },
+      {
+        name: "Vaseline — Healthy Bright", client: "Skincare Brand · Storefront Banner",
+        rows: [{ items: [
+          { src: "images/ecommerce/vaseline-healthy-bright-banner.png", title: "#BrightenUp Your Skin — Main Banner", type: "E-commerce Main Banner", preset: "wideBanner" }
+        ]}]
+      },
+      {
+        name: "Pond's — Valentine's Day Bundle", client: "Beauty by LazMall · Seasonal Campaign",
+        rows: [{ items: [
+          { src: "images/ecommerce/ponds-valentines-bundle.png", title: "Valentine's Bundles of 2 — Up to 50% Off", type: "Marketplace Campaign Ad · 1080×1080", preset: "square" }
+        ]}]
+      },
+      {
+        name: "Surf — Wais Sale × Lazada", client: "Seasonal Campaign · Key Visual",
+        rows: [{ items: [
+          { src: "images/ecommerce/surf-wais-sale-key-visual.png", title: "Surf Wais Sale — Key Visual", type: "Marketplace Campaign Ad · 1080×1080", preset: "square" }
+        ]}]
+      },
+      {
+        name: "Pond's — Cleansing Balm Flash Sale", client: "Flash Sale Campaign",
+        rows: [{ items: [
+          { src: "images/ecommerce/ponds-cleansing-balm-bogo.png", title: "Buy 1 Get 1 Free — Cleansing Balm", type: "Flash Sale Ad · 1200×1200", preset: "square" }
+        ]}]
+      }
+    ];
+
+    if (ECOMMERCE_GROUPS.length) {
+      galleries.ecommerce = renderGallery('galleryRoot', ECOMMERCE_GROUPS, ECOMMERCE_RATIOS, 'ecommerce');
+    } else {
+      document.getElementById('galleryRoot').innerHTML = `
+        <div class="card empty-state">
+          <strong>E-commerce work is on its way.</strong>
+          Product graphics and storefront design samples will be added here soon.
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>

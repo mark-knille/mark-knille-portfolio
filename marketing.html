@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marketing & Printed Materials | Mark Knille</title>
+  <meta
+    name="description"
+    content="Tri-fold brochures, exhibition leaflets, transit livery, and print design work by Mark Knille."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html#home" class="logo">Mark<span>Knille</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html#about">About</a>
+        <a href="index.html#skills">Skills</a>
+        <a href="index.html#projects">Projects</a>
+        <a href="index.html#process">Process</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section subpage-hero">
+      <div class="container">
+        <a href="index.html#projects" class="back-link">&larr; Back to Selected Work</a>
+        <span class="eyebrow">Freelance Work</span>
+        <h1 class="section-title">Marketing & Printed Materials</h1>
+        <p class="section-copy">
+          Tri-fold brochures, exhibition leaflets, transit livery, and a full brochure redesign produced for clients across economic development, health, retail, and consumer electronics.
+        </p>
+        <div id="galleryRoot"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Mark Knille. Built with HTML, CSS, and JavaScript.</p>
+      <p>Designed to showcase creative thinking, design execution, and professional potential.</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-btn lightbox-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lightbox-btn lightbox-zoom" id="lbZoom" aria-label="Switch to full-size scroll view" title="Toggle zoom / scroll view">&#128269;</button>
+    <button class="lightbox-btn lightbox-prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-btn lightbox-next" id="lbNext" aria-label="Next image">&#8250;</button>
+    <div class="lightbox-inner">
+      <div class="lightbox-media" id="lbMedia">
+        <img id="lbImg" alt="" />
+      </div>
+      <div class="lightbox-caption">
+        <strong id="lbTitle"></strong>
+        <span id="lbType"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="site.js"></script>
+  <script src="gallery.js"></script>
+  <script>
+    const MARKETING_RATIOS = {
+      parisPanel: { aspect: '4/3', fit: 'contain', basis: '460px', max: '540px' },
+      livery:     { aspect: '3/2', fit: 'contain', basis: '560px', max: '640px' },
+      wrap:       { aspect: '3/2', fit: 'cover',   basis: '420px', max: '480px' },
+      guide:      { aspect: '4/3', fit: 'contain', basis: '520px', max: '600px' },
+      panel:      { aspect: '4/3', fit: 'contain', basis: '420px', max: '480px' }
+    };
+
+    const MARKETING_GROUPS = [
+      {
+        name: "Paris Texas EDC — Brochure Redesign",
+        client: "Economic Development Corporation · Full Redesign",
+        meta: "Tri-fold · 11×17in flat, 8.5×3.67in folded · CMYK · 100lb gloss text",
+        palette: ["#183048", "#A81818", "#90A8A8"],
+        rows: [
+          { label: "Cover Panels", items: [
+            { src: "images/marketing/paris-texas-cover-before.jpg", title: "Cover Panels — Before", type: "Tri-Fold Brochure · Original", badge: "before", preset: "parisPanel" },
+            { src: "images/marketing/paris-texas-cover-after.jpg", title: "Cover Panels — After", type: "Tri-Fold Brochure · Redesign", badge: "after", preset: "parisPanel" }
+          ]},
+          { label: "Inner Spread", items: [
+            { src: "images/marketing/paris-texas-spread-before.jpg", title: "Inner Spread — Before", type: "Tri-Fold Brochure · Original", badge: "before", preset: "parisPanel" },
+            { src: "images/marketing/paris-texas-spread-after.jpg", title: "Inner Spread — After", type: "Tri-Fold Brochure · Redesign", badge: "after", preset: "parisPanel" }
+          ]}
+        ]
+      },
+      {
+        name: "Skyworth AI TV — Transit Train Wrap",
+        client: "Consumer Electronics · OOH Campaign",
+        meta: "Full-vehicle vinyl wrap + straphanger cards · CMYK · outdoor-grade laminate",
+        palette: ["#2F2E5C", "#304878"],
+        rows: [{ items: [
+          { src: "images/marketing/skyworth-livery-concept.jpg", title: "Full Livery Concept — G2 & E6 Series", type: "Train Wrap Design", preset: "livery" },
+          { src: "images/marketing/skyworth-g2-station.jpg", title: "G2 Series Wrap — Station Platform", type: "On-Site Photography", preset: "wrap" },
+          { src: "images/marketing/skyworth-android-tv-car.jpg", title: "Android TV Wrap — Car Exterior", type: "On-Site Photography", preset: "wrap" }
+        ]}]
+      },
+      {
+        name: "Shoetopia — Retail Foot-Health Guide",
+        client: "Footwear Retailer · Tri-Fold",
+        meta: "Tri-fold · 11×17in flat, 8.5×3.67in folded · CMYK · 80lb matte text",
+        palette: ["#186048", "#307860"],
+        rows: [{ items: [
+          { src: "images/marketing/shoetopia-trifold-mockup.jpg", title: "Heel Lock & Bunion Support Guide", type: "Tri-Fold Brochure · Mockup", preset: "guide" }
+        ]}]
+      },
+      {
+        name: "DigiMompreneur Academy — Coaching Brochure",
+        client: "Business Coaching Brand · Tri-Fold",
+        meta: "Tri-fold · 11×17in flat, 8.5×3.67in folded · CMYK · 100lb silk text",
+        palette: ["#F030A8", "#004890"],
+        rows: [{ items: [
+          { src: "images/marketing/digimompreneur-cover-contact.jpg", title: "Cover, Testimonials & Contact", type: "Tri-Fold · Outer Panels", preset: "panel" },
+          { src: "images/marketing/digimompreneur-services-about.jpg", title: "Services & About", type: "Tri-Fold · Inner Panels", preset: "panel" }
+        ]}]
+      },
+      {
+        name: "K2 Occupational Health — Exhibition Leaflet",
+        client: "Occupational Health Clinic · Tri-Fold",
+        meta: "Tri-fold leaflet · A4 flat, 3-panel · CMYK · 130gsm silk",
+        palette: ["#181860", "#30A8D8"],
+        rows: [{ items: [
+          { src: "images/marketing/k2-services-contact.jpg", title: "Services & Contact", type: "Tri-Fold · Outer Panels", preset: "panel" },
+          { src: "images/marketing/k2-benefits-about.jpg", title: "Benefits & About", type: "Tri-Fold · Inner Panels", preset: "panel" }
+        ]}]
+      }
+    ];
+
+    galleries.marketing = renderGallery('galleryRoot', MARKETING_GROUPS, MARKETING_RATIOS, 'marketing');
+  </script>
+</body>
+</html>
