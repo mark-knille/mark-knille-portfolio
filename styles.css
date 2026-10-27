@@ -847,26 +847,6 @@
       margin: -38px 0 0 -38px;
     }
 
-    .analytics-shot { max-width: 860px; margin: 24px 0 0; }
-
-    .analytics-open {
-      display: block;
-      width: 100%;
-      padding: 0;
-      border: 0;
-      background: #000;
-      cursor: zoom-in;
-    }
-
-    .analytics-open img { width: 100%; height: auto; }
-
-    .analytics-shot figcaption {
-      padding: 12px 16px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
     .results-card { padding: 24px; display: flex; flex-direction: column; }
     .result-stats { display: grid; gap: 12px; margin-bottom: 16px; }
     .results-note { color: var(--muted); font-size: 0.8rem; line-height: 1.5; margin-bottom: 14px; }
