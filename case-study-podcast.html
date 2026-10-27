@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Podcast Episode Production System | Mark Knille</title>
+  <meta
+    name="description"
+    content="Case study: a repeatable, AI-assisted production system that turns each Footwear Retailer podcast episode into a complete, on-brand deliverable package."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html#home" class="logo">Mark<span>Knille</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="index.html#approach">Approach</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section subpage-hero">
+      <div class="container">
+        <a href="index.html#case-studies" class="back-link">&larr; Back to Case Studies</a>
+        <span class="eyebrow">Case Study · Creative Operations</span>
+        <h1 class="section-title">Podcast Episode Production System</h1>
+        <p class="section-copy">
+          How I turned a scramble of one-off assets into a repeatable package, so every episode of The Footwear Retailer ships complete, on brand, and ready for the client and sponsor.
+        </p>
+
+        <div class="overview-grid">
+          <div class="card overview-item"><strong>Client</strong><span>The Footwear Retailer podcast, hosted by Pete Mohr and sponsored by NSRA</span></div>
+          <div class="card overview-item"><strong>My role</strong><span>Workflow design, creative direction, design and video production, QA</span></div>
+          <div class="card overview-item"><strong>Scope</strong><span>Every episode: SEO, client reporting, scheduling, sponsor kit, social graphics, video</span></div>
+          <div class="card overview-item"><strong>Tools</strong><span>Brand-kit templates, AI-assisted workflows, Riverside, Descript, Canva</span></div>
+        </div>
+
+        <div class="work-category">
+          <h2 class="work-category-title">The challenge</h2>
+          <p class="work-category-copy">
+            A podcast episode is more than a video. Each one needs search-ready titles and descriptions, a deck for the client, a posting plan, a separate package for the sponsor, and a set of social graphics, all in the show’s brand. Building that from scratch every episode is slow and invites inconsistency.
+          </p>
+        </div>
+
+        <div class="work-category">
+          <h2 class="work-category-title">The system</h2>
+          <p class="work-category-copy">
+            I standardized the whole package. The show’s brand kit (colors, fonts, logo) feeds a set of templates, and an AI-assisted workflow drafts copy from the episode transcript. I review, refine, and QA every piece before it goes out.
+          </p>
+
+          <div class="flow">
+            <div class="card flow-step">
+              <span class="flow-label">Inputs</span>
+              <ul><li>Episode recording</li><li>Transcript</li><li>Show brand kit</li></ul>
+            </div>
+            <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+            <div class="card flow-step">
+              <span class="flow-label">Process</span>
+              <ul><li>Templates per deliverable</li><li>AI-assisted copy drafts</li><li>Design and edit</li><li>Review and QA</li></ul>
+            </div>
+            <div class="flow-arrow" aria-hidden="true">&rarr;</div>
+            <div class="card flow-step flow-out">
+              <span class="flow-label">Output</span>
+              <ul><li>One complete, client-ready episode package</li></ul>
+            </div>
+          </div>
+
+          <div class="grid deliverable-grid">
+            <div class="card deliverable"><h3>SEO package</h3><p>Episode titles, descriptions, and keywords written from the transcript.</p></div>
+            <div class="card deliverable"><h3>Client presentation</h3><p>A deck summarizing the episode and its marketing assets for the client.</p></div>
+            <div class="card deliverable"><h3>Scheduling workbook</h3><p>A posting plan for each asset across channels.</p></div>
+            <div class="card deliverable"><h3>Sponsor posting package</h3><p>A dedicated kit for NSRA, matched to their template.</p></div>
+            <div class="card deliverable"><h3>Social launch kit</h3><p>Email header, social posts, a carousel, and a story, all in the show’s brand.</p></div>
+            <div class="card deliverable"><h3>Episode video</h3><p>The episode edit and social clips.</p></div>
+          </div>
+        </div>
+
+        <div class="work-category">
+          <h2 class="work-category-title">Sample output: Episode 26 launch kit</h2>
+          <p class="work-category-copy">The social launch kit from one episode, built from the same templates used for every episode. Click any graphic to view it full size.</p>
+          <div id="galleryRoot"></div>
+        </div>
+
+        <div class="work-category" data-clip-section>
+          <h2 class="work-category-title">Featured clip</h2>
+          <p class="work-category-copy">A social clip from the show. Press play to watch.</p>
+          <div class="reel-row" id="clipRoot"></div>
+        </div>
+
+        <div class="work-category">
+          <div class="card result-box">
+            <span class="eyebrow">Result</span>
+            <p>Each episode now ships as one consistent package instead of a pile of one-off requests. The client gets a predictable set of deliverables, the sponsor gets its own posting kit, and new episodes start from a proven template instead of a blank page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Mark Knille. Built with HTML, CSS, and JavaScript.</p>
+      <p>Creative Project Lead · Creative Operations</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-btn lightbox-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lightbox-btn lightbox-zoom" id="lbZoom" aria-label="Switch to full-size scroll view" title="Toggle zoom / scroll view">&#128269;</button>
+    <button class="lightbox-btn lightbox-prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-btn lightbox-next" id="lbNext" aria-label="Next image">&#8250;</button>
+    <div class="lightbox-inner">
+      <div class="lightbox-media" id="lbMedia">
+        <img id="lbImg" alt="" />
+      </div>
+      <div class="lightbox-caption">
+        <strong id="lbTitle"></strong>
+        <span id="lbType"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="site.js"></script>
+  <script src="gallery.js"></script>
+  <script src="video.js"></script>
+  <script>
+    const PODCAST_RATIOS = {
+      header:   { aspect: '3/1',  fit: 'cover', basis: '640px', max: '760px' },
+      square:   { aspect: '1/1',  fit: 'cover', basis: '280px', max: '340px' },
+      carousel: { aspect: '4/5',  fit: 'cover', basis: '300px', max: '360px' },
+      tall:     { aspect: '9/16', fit: 'cover', basis: '240px', max: '280px' }
+    };
+
+    const PODCAST_GROUPS = [
+      {
+        name: "The Footwear Retailer — Episode 26 Launch Kit", client: "Retail Podcast · Sponsored by NSRA",
+        palette: ["#0A0909", "#FA991C", "#FFFFFF"],
+        rows: [
+          { label: "Email header", items: [
+            { src: "images/podcast/tfr-ep26-email-header.jpg", title: "Thirty Years of Retail Experience", type: "Email Header · 1200×400", preset: "header" }
+          ]},
+          { label: "Social posts", items: [
+            { src: "images/podcast/tfr-ep26-teaser-square.jpg", title: "It's Not the Product", type: "Teaser Post · 1080×1080", preset: "square" },
+            { src: "images/podcast/tfr-ep26-quote-post.jpg", title: "Guest Quote", type: "Quote Post · 1080×1080", preset: "square" },
+            { src: "images/podcast/tfr-ep26-checklist-post.jpg", title: "What Your Customer Is Thinking", type: "Social Post · 1080×1080", preset: "square" }
+          ]},
+          { label: "Story", items: [
+            { src: "images/podcast/tfr-ep26-teaser-story.jpg", title: "Episode Teaser", type: "Story · 1080×1920", preset: "tall" }
+          ]},
+          { label: "Carousel · 6 slides", items: [
+            { src: "images/podcast/tfr-ep26-carousel-1.jpg", title: "Carousel — Slide 1", type: "Carousel · 1080×1350", preset: "carousel" },
+            { src: "images/podcast/tfr-ep26-carousel-2.jpg", title: "Carousel — Slide 2", type: "Carousel · 1080×1350", preset: "carousel" },
+            { src: "images/podcast/tfr-ep26-carousel-3.jpg", title: "Carousel — Slide 3", type: "Carousel · 1080×1350", preset: "carousel" },
+            { src: "images/podcast/tfr-ep26-carousel-4.jpg", title: "Carousel — Slide 4", type: "Carousel · 1080×1350", preset: "carousel" },
+            { src: "images/podcast/tfr-ep26-carousel-5.jpg", title: "Carousel — Slide 5", type: "Carousel · 1080×1350", preset: "carousel" },
+            { src: "images/podcast/tfr-ep26-carousel-6.jpg", title: "Carousel — Slide 6", type: "Carousel · 1080×1350", preset: "carousel" }
+          ]}
+        ]
+      }
+    ];
+
+    galleries.podcast = renderGallery('galleryRoot', PODCAST_GROUPS, PODCAST_RATIOS, 'podcast');
+    renderClips('clipRoot');
+  </script>
+</body>
+</html>

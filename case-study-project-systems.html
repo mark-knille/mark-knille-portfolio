@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Project Workspaces | Mark Knille</title>
+  <meta
+    name="description"
+    content="Case study: client project workspaces in Notion and Trello that track every request from brief to delivery, including timelines, status, feedback, and approvals."
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html#home" class="logo">Mark<span>Knille</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="index.html#approach">Approach</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section subpage-hero">
+      <div class="container">
+        <a href="index.html#case-studies" class="back-link">&larr; Back to Case Studies</a>
+        <span class="eyebrow">Case Study · Project Management</span>
+        <h1 class="section-title">Client Project Workspaces in Notion & Trello</h1>
+        <p class="section-copy">
+          How I keep several client projects moving at once, with one shared place for every request, deadline, round of feedback, and approval.
+        </p>
+
+        <div class="overview-grid">
+          <div class="card overview-item"><strong>Clients</strong><span>Multiple concurrent client accounts</span></div>
+          <div class="card overview-item"><strong>My role</strong><span>Designed, set up, and ran the client workspaces</span></div>
+          <div class="card overview-item"><strong>Scope</strong><span>Intake, scheduling, status tracking, feedback, approvals, handoff</span></div>
+          <div class="card overview-item"><strong>Tools</strong><span>Notion, Trello</span></div>
+        </div>
+
+        <div class="work-category">
+          <h2 class="work-category-title">The challenge</h2>
+          <p class="work-category-copy">
+            With several clients at once, requests come in through email, chat, and calls, and feedback lands in different threads. Without one source of truth, deadlines slip and nobody is sure which version was approved.
+          </p>
+        </div>
+
+        <div class="work-category">
+          <h2 class="work-category-title">The workflow</h2>
+          <p class="work-category-copy">Every request moves through the same stages, so clients and the team always know what happens next.</p>
+
+          <ol class="stage-row">
+            <li class="card stage"><span>1</span><strong>Intake</strong><p>Requests captured with goals, specs, and due dates</p></li>
+            <li class="card stage"><span>2</span><strong>Brief</strong><p>Scope, owner, and timeline agreed</p></li>
+            <li class="card stage"><span>3</span><strong>In production</strong><p>Tasks tracked with status and priority</p></li>
+            <li class="card stage"><span>4</span><strong>Client review</strong><p>Feedback rounds logged on the card</p></li>
+            <li class="card stage"><span>5</span><strong>Approved</strong><p>Sign-off recorded before final export</p></li>
+            <li class="card stage"><span>6</span><strong>Delivered</strong><p>Final files handed off and archived</p></li>
+          </ol>
+        </div>
+
+        <div class="work-category">
+          <h2 class="work-category-title">Inside the workspaces</h2>
+          <p class="work-category-copy">Screenshots from client workspaces. Client names and sensitive details are hidden for confidentiality. Click any image to view it full size.</p>
+          <div id="galleryRoot"></div>
+        </div>
+
+        <div class="work-category">
+          <div class="card result-box">
+            <span class="eyebrow">Result</span>
+            <p>Clients can see where their project stands at a glance, feedback stays attached to the work it’s about, and every approval is on record. That makes it possible to run several accounts in parallel without things slipping between revision rounds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Mark Knille. Built with HTML, CSS, and JavaScript.</p>
+      <p>Creative Project Lead · Creative Operations</p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-btn lightbox-close" id="lbClose" aria-label="Close">&times;</button>
+    <button class="lightbox-btn lightbox-zoom" id="lbZoom" aria-label="Switch to full-size scroll view" title="Toggle zoom / scroll view">&#128269;</button>
+    <button class="lightbox-btn lightbox-prev" id="lbPrev" aria-label="Previous image">&#8249;</button>
+    <button class="lightbox-btn lightbox-next" id="lbNext" aria-label="Next image">&#8250;</button>
+    <div class="lightbox-inner">
+      <div class="lightbox-media" id="lbMedia">
+        <img id="lbImg" alt="" />
+      </div>
+      <div class="lightbox-caption">
+        <strong id="lbTitle"></strong>
+        <span id="lbType"></span>
+      </div>
+    </div>
+  </div>
+
+  <script src="site.js"></script>
+  <script src="gallery.js"></script>
+  <script>
+    const WORKSPACE_RATIOS = {
+      screen: { aspect: '16/10', fit: 'cover', position: 'top', basis: '480px', max: '560px' }
+    };
+
+    // Add blurred/cropped screenshots to images/ops/ and list them here, e.g.
+    // { src: "images/ops/notion-client-dashboard.jpg", title: "Client Dashboard", type: "Notion · Project Overview", preset: "screen" }
+    const WORKSPACE_GROUPS = [];
+
+    if (WORKSPACE_GROUPS.length) {
+      galleries.workspaces = renderGallery('galleryRoot', WORKSPACE_GROUPS, WORKSPACE_RATIOS, 'workspaces');
+    } else {
+      document.getElementById('galleryRoot').innerHTML = `
+        <div class="card empty-state">
+          <strong>Workspace screenshots are on their way.</strong>
+          Notion and Trello examples will be added here soon.
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
