@@ -8,7 +8,7 @@
     name="description"
     content="Case study: a repeatable, AI-assisted production system that turns each Footwear Retailer podcast episode into a complete, on-brand package with a week-long sponsor rollout, shown through Episode 28."
   />
-  <link rel="stylesheet" href="styles.css?v=20261027" />
+  <link rel="stylesheet" href="styles.css?v=20261027b" />
 </head>
 <body>
   <header class="site-header">
@@ -67,6 +67,13 @@
               <a class="text-link" href="https://youtu.be/60X2nYpP4d8" target="_blank" rel="noopener noreferrer">Watch on YouTube &rarr;</a>
             </div>
           </div>
+
+          <figure class="card analytics-shot">
+            <button class="analytics-open" id="analyticsOpen" type="button" aria-label="View the YouTube Studio screenshot full size">
+              <img src="images/podcast/tfr-ep28-youtube-retention.jpg" alt="YouTube Studio audience retention for Episode 28: 12:18 average view duration, 26.4% average percentage viewed, and 66% of viewers still watching at 0:30, above typical" loading="lazy" />
+            </button>
+            <figcaption>Straight from YouTube Studio: audience retention for Episode 28 since it was published on Sep 22, 2026. Click to enlarge.</figcaption>
+          </figure>
         </div>
 
         <div class="work-category">
@@ -154,9 +161,9 @@
     </div>
   </div>
 
-  <script src="site.js?v=20261027"></script>
-  <script src="gallery.js?v=20261027"></script>
-  <script src="video.js?v=20261027"></script>
+  <script src="site.js?v=20261027b"></script>
+  <script src="gallery.js?v=20261027b"></script>
+  <script src="video.js?v=20261027b"></script>
   <script>
     // The Episode 28 NSRA posting pack, in the order it goes out.
     const ROLLOUT = [
@@ -196,6 +203,13 @@
       li.querySelector('.rollout-visual').addEventListener('click', () => openLightbox('rollout', first));
       rolloutRoot.appendChild(li);
     });
+
+    galleries.analytics = [{
+      src: "images/podcast/tfr-ep28-youtube-retention.jpg",
+      title: "YouTube Studio · Audience retention",
+      type: "Episode 28 · Sep 22 – Oct 27, 2026"
+    }];
+    document.getElementById('analyticsOpen').addEventListener('click', () => openLightbox('analytics', 0));
 
     initYouTubeEmbeds();
     renderClips('clipRoot');
