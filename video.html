@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video | Mark Knille</title>
+  <meta
+    name="description"
+    content="Video editing for podcasts and brands: vertical podcast reels, episode promos, and YouTube ads with captions, motion graphics, and b-roll."
+  />
+  <link rel="stylesheet" href="styles.css?v=20261028" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html#home" class="logo">Mark<span>Knille</span></a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation">Menu</button>
+
+      <nav class="nav" id="navMenu">
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="index.html#approach">Approach</a>
+        <a href="index.html#experience">Experience</a>
+        <a href="index.html#work">Work</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section subpage-hero">
+      <div class="container">
+        <a href="index.html#work" class="back-link">&larr; Back to Creative Work</a>
+        <span class="eyebrow">Freelance Work</span>
+        <h1 class="section-title">Video</h1>
+        <p class="section-copy">
+          Podcast reels, episode promos, and YouTube ads I edited for clients. Each one is cut for its platform, with captions, titles, and motion graphics in the client’s brand. Press play on any clip.
+        </p>
+        <div id="videoRoot"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>© <span id="year"></span> Mark Knille. Built with HTML, CSS, and JavaScript.</p>
+      <p>Creative Project Lead · Creative Operations</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20261028"></script>
+  <script src="video.js?v=20261028"></script>
+  <script>
+    const VIDEO_GROUPS = [
+      {
+        name: "Podcast Reels & Promos", client: "Vertical · Instagram, TikTok, Shorts", orientation: "vertical",
+        notes: "Clips cut from long-form episodes, with split-screen layouts, animated titles, word-by-word captions, and branded end cards.",
+        clips: [
+          { id: "tfr-build-retail-business", title: "Build a Retail Business That Supports Your Life", type: "The Footwear Retailer · Reel · 1:00" },
+          { id: "smp-amanita-promo", title: "Introducing Amanita Muscaria", type: "The Sacred Mycelium Podcast · Promo · 0:32" }
+        ]
+      },
+      {
+        name: "YouTube Ads", client: "16:9 · Scammune online course", orientation: "horizontal",
+        notes: "Hook-first ads with kinetic type, highlighted captions, on-screen email and phone mockups, stock b-roll, and a course end card.",
+        clips: [
+          { id: "scammune-scammers-secret", title: "The Scammer’s Secret", type: "Scammune · YouTube Ad · 0:33" },
+          { id: "scammune-would-you-click", title: "Would You Click This?", type: "Scammune · YouTube Ad · 0:43" }
+        ]
+      }
+    ];
+
+    renderVideoGroups('videoRoot', VIDEO_GROUPS);
+  </script>
+</body>
+</html>
